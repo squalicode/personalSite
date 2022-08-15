@@ -1,117 +1,142 @@
 :root {
-    --bodyColor: #d0d0d4;
-    --backgroundColor: #ebebeb;
-    --foregroundColor: #01a;
-    --linkColor: #111;
-    --bigSpace: 1.3em;
-    --smallSpace: 0.7em;
-    --xsmallSpace: 0.5em;
-    color-scheme: light;
+    --background: #082369;
+    --foreground: #ebebeb;
+    --middleground: #2B4994;
+    --large: 1.3em;
+    --medium: 0.7em;
+    --small: 0.5em;
+    --xsmall: 0.15em;
 }
 
-/*********************** general ***********************/
+
+
 
 * {
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
-    color: var(--foregroundColor);
-    line-height: 1.8em;
 }
 
-h1,
+html {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Roboto', 'Arial', sans-serif;
+    line-height: 2em;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--foreground) var(--background);
+}
+
+html::-webkit-scrollbar {
+    background-color: var(--background);
+    width: var(--medium);
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: var(--foreground);
+}
+
 ::selection,
 :focus-visible {
-    background-color: var(--foregroundColor);
-    color: var(--backgroundColor);
+    background-color: var(--foreground);
+    color: var(--background);
 }
 
 :focus-visible {
-    /* Windows high-contrast themes will override transparency */
-    outline: 4px solid transparent;
+    /* Windows high-contrast themes override transparency */
+    outline: var(--xsmall) solid transparent;
 }
 
-:focus-visible svg {
-    /* There is no way (that I know of) to change the fill/stroke color of SVGs on focus */
-    filter: invert() brightness(500%);
-}
+
+
 
 a {
-    color: var(--linkColor);
+    color: var(--foreground);
     font-weight: bold;
+    text-decoration: none;
 }
 
-a:visited {
-    color: var(--foregroundColor);
+a,
+summary {
+    transition: opacity 0.1s;
 }
 
-a:hover {
+a:hover,
+summary:hover,
+.dim {
     opacity: 0.6;
 }
 
-a:focus-visible:visited {
-    /* Otherwise, link text becomes invisible when visited and hovered, by override */
-    color: var(--backgroundColor);
+main a,
+footer a {
+    border-bottom: var(--xsmall) solid var(--foreground);
 }
+
+section > a {
+    margin-right: var(--small);
+    border: var(--xsmall) solid var(--foreground);
+    padding: var(--small);
+}
+
+main a:visited {
+    border-color: var(--middleground);
+}
+
+
+
 
 body {
-    background-color: var(--bodyColor);
+    width: 100vw;
     display: flex;
         justify-content: center;
-    height: 100vh;
+    overflow-x: hidden;
 }
 
-body > div,
-details,
-main {
-    padding: var(--bigSpace);
+body > div {
+    width: 70vw;
+    margin: var(--large) 0;
+    padding: var(--large);
 }
 
-h1 {
-    width: fit-content;
-    width: -moz-fit-content;
+
+
+
+h1:after {
+    /* Don't want this to be an actual "_": screen readers read CSS-inserted content */
+    content: "";
+    display: inline-block;
+    position: relative;
+        top: var(--xsmall);
+        left: calc(var(--xsmall) / 2);
+    width: var(--small);
+    border-bottom: calc(var(--xsmall) / 2) solid var(--foreground);
+    animation: blink 1s 5;
 }
 
 h3 {
-    border-bottom: 2px solid var(--foregroundColor);
-    margin: var(--bigSpace) 0;
+    margin: calc(var(--large) * 2) 0 var(--large) 0;
 }
 
-hr {
-    display: none;
+h3,
+.contentWrapper {
+    border-top: var(--xsmall) solid var(--foreground);
 }
 
-main,
-nav {
-    border: calc(var(--smallSpace) / 3) solid var(--foregroundColor);
-    outline: var(--smallSpace) solid var(--backgroundColor);
-    background-color: var(--backgroundColor);
-    margin-top: var(--smallSpace);
-    margin-bottom: var(--smallSpace);
-}
 
-footer,
-li {
-    margin: var(--smallSpace) 0;
-}
 
-/*********************** navigation bar ***********************/
 
 nav {
     display: flex;
         flex-direction: column;
-    height: fit-content;
-    height: -moz-fit-content;
-    margin-right: calc(var(--smallSpace) * 4);
-    padding: var(--smallSpace);
+    margin-right: var(--large);
+    padding-right: var(--large);
+    padding-top: var(--medium);
+    border-right: var(--xsmall) solid var(--foreground);
 }
 
 nav a {
-    text-decoration: none;
-    color: var(--foregroundColor);
     display: flex;
         flex-flow: row nowrap;
-    margin: var(--smallSpace) 0;
+    margin: var(--medium) 0;
 }
 
 nav a svg {
@@ -119,66 +144,43 @@ nav a svg {
     align-self: center;
 }
 
-/*********************** main content, scrollbars ***********************/
+
+
 
 .contentWrapper {
+    width: 100%;
     display: flex;
         flex-direction: row;
-    margin: var(--bigSpace) 0;
+    margin: var(--large) 0;
 }
 
 main {
-    width: 50vw;
-    max-height: calc(100vh - calc(var(--bigSpace) * 11.5));
-    overflow: auto;
-    
-    scrollbar-color: var(--backgroundColor) var(--foregroundColor);
+    width: 100%;
+    padding: 0 var(--medium);
 }
 
-main::-webkit-scrollbar {
-    background-color: var(--backgroundColor);
-}
-
-main::-webkit-scrollbar-thumb {
-    background-clip: padding-box;
-    background-color: var(--foregroundColor);
-    border-top: 5px solid var(--backgroundColor);
-    border-bottom: 5px solid var(--backgroundColor);
-}
-
-main::-webkit-scrollbar-button:single-button {
-    background-color: var(--backgroundColor);
-    display: block;
-    border-style: solid;
-    height: 0.8em;
-}
-
-main::-webkit-scrollbar-button:single-button:vertical:decrement {
-    border-width: 0 0.5em 0.5em 0.5em;
-    border-color: transparent transparent var(--foregroundColor) transparent;
-}
-
-main::-webkit-scrollbar-button:single-button:vertical:increment {
-    border-width: 0.5em 0.5em 0 0.5em;
-    border-color: var(--foregroundColor) transparent transparent transparent;
+details,
+main p,
+ul,
+h2 {
+    margin: var(--large) 0;
 }
 
 details {
-    background-color: var(--bodyColor);
+    background-color: var(--middleground);
+    padding: var(--medium) var(--large);
 }
 
 summary {
     cursor: pointer;
 }
 
-details,
-main p,
-ul {
-    margin: var(--bigSpace) 0;
+hr {
+    display: none;
 }
 
 ul {
-    padding-left: var(--bigSpace);
+    padding-left: var(--large);
     list-style: square;
 }
 
@@ -187,54 +189,70 @@ ul.noStyle {
     padding-left: 0;
 }
 
+li {
+    margin: var(--medium) 0;
+}
+
 progress {
-    height: var(--xsmallSpace);
+    height: var(--small);
     vertical-align: middle;
-    margin-right: var(--smallSpace);
-    background-color: var(--bodyColor);
-    color: var(--foregroundColor);
+    margin-right: var(--medium);
+    background-color: var(--middleground);
+    color: var(--foreground);
     border: none;
 }
 
 progress::-webkit-progress-bar {
-    background-color: var(--bodyColor);
+    background-color: var(--middleground);
 }
 
 progress::-webkit-progress-value {
-    background-color: var(--foregroundColor);
+    background-color: var(--foreground);
 }
 
 progress::-moz-progress-bar {
-    background-color: var(--foregroundColor);
+    background-color: var(--foreground);
 }
 
-/*********************** footer ***********************/
+
+
 
 footer {
     font-size: x-small;
-    position: fixed;
-        bottom: 0;
+    line-height: 1.5em;
 }
 
-/*********************** responsive ***********************/
+
+
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    90% {
+        opacity: 100%;
+    }
+  }
 
 @media (max-width: 700px) {
+
     .contentWrapper {
         flex-direction: column;
         align-items: center;
     }
 
     body > div { 
-        /* screen width - ( outline size * 4 + border size) */
-        width: calc(100% - calc(calc(var(--smallSpace) * 4) + var(--smallSpace) / 3));
+        width: 90%;
     }
 
     nav {
         flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
         width: 100%;
         margin-right: 0;
-        margin-bottom: calc(var(--smallSpace) * 2);
+        padding: var(--medium) 0;
+        border: none;
+        flex-wrap: wrap;
     }
 
     nav * {
@@ -242,26 +260,6 @@ footer {
     }
 
     nav a {
-        margin: 0 calc(var(--xsmallSpace) / 2);
-    }
-
-    main {
-        width: 100%;
-        padding: var(--smallSpace);
-        max-height: calc(100vh - calc(var(--bigSpace) * 14));
-        scrollbar-width: thin;
-        scrollbar-color: var(--foregroundColor) var(--backgroundColor);
-    }
-
-    main::-webkit-scrollbar-button:single-button {
-        height: 0;
-    }
-
-    main::-webkit-scrollbar {
-        width: var(--smallSpace);
-    }
-
-    main::-webkit-scrollbar-thumb {
-        border: 2px solid var(--backgroundColor);
+        margin: 0 var(--xsmall);
     }
 }
