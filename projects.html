@@ -70,15 +70,101 @@
             <h2>Projects</h2>
 
             <section>
+                <h3>Portfolio (this website)</h3>
+                <a href="https://github.com/squalicode/personalSite" aria-label="Portfolio website repository">Repository</a>
+                <p>
+                    Built to be accessible and minimal while beautiful:
+                    <ul>
+                        <li>
+                            Looks good at any level of zoom across any device.
+                        </li>
+                        <li>
+                            Written HTML-first, respecting semantics: readable by screen readers, bots (good for SEO), and those who use custom or no CSS.
+                        </li>
+                        <li>
+                            Navigable with keyboard, with custom focus style (try using the <kbd>Tab</kbd> key).
+                        </li>
+                        <li>
+                            Loads fast.
+                        </li>
+                    </ul>
+                </p>
+            </section>
+
+            <section>
+                <h3>Coudre Studio website</h3>
+                <a href="https://coudre.studio/" aria-label="Coudre Studio website">Website</a>
+                <a href="https://github.com/squalicode/coudreWebsite2022" aria-label="Coudre Studio website repository">Repository</a>
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcset="
+                        ./imgs/coudre-home-1700.webp 1700w,
+                        ./imgs/coudre-home-1000.webp 1000w,
+                        ./imgs/coudre-home-800.webp 800w
+                        "
+                    >
+                    <img src="./imgs/coudre-home-1700.jpg" alt="Screenshot of the Orniteco game screen, showing the quiz options for three different birds accompanied by their pictures.">
+                </picture>
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcset="
+                        ./imgs/coudre-projects-1700.webp 1700w,
+                        ./imgs/coudre-projects-1000.webp 1000w,
+                        ./imgs/coudre-projects-800.webp 800w
+                        "
+                    >
+                    <img src="./imgs/coudre-projects-1700.jpg" alt="Screenshot of the Orniteco game screen, with the dark high-contrast theme and the dyslexia-friendly font applied.">
+                </picture>
+                <p>
+                    A clean, picture-first portfolio for Coudre Studio. Built with the same principles as this portoflio in mind.
+                </p>
+                <aside>
+                    <p>
+                        This project was an exercise on delivering beautiful images while keeping website loading time in check. As such, it makes extensive use of the <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> elements, as well as optimized images in the modern <code>.webp</code> format. All of it is displayed in <code>grid</code> and <code>flexbox</code> layouts— without breaking in older browsers.
+                    </p>
+                </aside>
+            </section>
+
+            <section>
                 <h3>Orniteco</h3>
                 <a href="https://orniteco.netlify.app/" aria-label="Orniteco website">Website</a>
                 <a href="https://github.com/squalicode/orniteco" aria-label="Orniteco repository">Repository</a>
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcset="
+                        ./imgs/orniteco-game-1700.webp 1700w,
+                        ./imgs/orniteco-game-1000.webp 1000w,
+                        ./imgs/orniteco-game-800.webp 800w
+                        "
+                    >
+                    <img src="./imgs/orniteco-game-1700.jpg" alt="Screenshot of the Orniteco game screen, showing the quiz options for three different birds accompanied by their pictures.">
+                </picture>
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcset="
+                        ./imgs/orniteco-accessible-1700.webp 1700w,
+                        ./imgs/orniteco-accessible-1000.webp 1000w,
+                        ./imgs/orniteco-accessible-800.webp 800w
+                        "
+                    >
+                    <img src="./imgs/orniteco-accessible-1700.jpg" alt="Screenshot of the Orniteco game screen, with the dark high-contrast theme and the dyslexia-friendly font applied.">
+                </picture>
                 <p>
-                    Interactive quiz to learn to identify birds by their song. The birds selected are common to the urban and semi-urban areas of Catalonia, specially of Barcelona.
+                    An interactive quiz to learn to identify birds by their song. The audios are provided by the collaborative recording repository xeno-canto and are fetched through the free <a href="https://xeno-canto.org/explore/api">xeno-canto API</a>.
                 </p>
                 <p>
-                    The audios are provided by the collaborative recording repository xeno-canto and are fetched through the free <a href="https://xeno-canto.org/explore/api">xeno-canto API</a>.
+                    It is available in several languages and themes (including dark, high-contrast and unlockable themes), as well as a dyslexia-friendly font. The data for the different levels, languages and themes is pulled from JSON files, making it easy and fast to add new content. When the user completes a level, she can easily share her progress through social media links.
                 </p>
+                <aside>
+                    <p>
+                        This was my first web development project, which served as the final project of the front-end development course I attended at <a href="https://cifovirtual.cat/">CIFO</a>. It was developed on a tight schedule while I learnt HTML, CSS and advanced Javascript concepts. The project required the use of a free API and was mostly unguided. Although not perfect, it surpassed what was expected from the assignment and had very good reception.
+                    </p>
+                </aside>
+                
             </section>
         </main>
 
