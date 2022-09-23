@@ -1,11 +1,11 @@
 :root {
     --background: #082369;
     --foreground: #ebebeb;
-    --middleground: #2B4994;
-    --large: 1.3em;
-    --medium: 0.7em;
-    --small: 0.5em;
-    --xsmall: 0.15em;
+    --middleground: #ebebeb20;
+    --large: 1.2rem;
+    --medium: 0.7rem;
+    --small: 0.5rem;
+    --xsmall: 0.15rem;
 }
 
 
@@ -72,13 +72,14 @@ footer a {
 }
 
 section > a {
-    margin-right: var(--small);
+    display: inline-block;
+    margin: 0 var(--small) var(--large) 0;
     border: var(--xsmall) solid var(--foreground);
-    padding: var(--small);
+    padding: var(--xsmall) var(--small);
 }
 
-main a:visited {
-    border-color: var(--middleground);
+section > a:first-of-type {
+    margin-left: calc(var(--large) * 2);
 }
 
 
@@ -106,14 +107,23 @@ h1:after {
     display: inline-block;
     position: relative;
         top: var(--xsmall);
-        left: calc(var(--xsmall) / 2);
-    width: var(--small);
-    border-bottom: calc(var(--xsmall) / 2) solid var(--foreground);
+        left: var(--xsmall);
+    width: var(--large);
+    border-bottom: var(--xsmall) solid var(--foreground);
     animation: blink 1s 5;
 }
 
+h2 {
+    font-size: 2.2em;
+}
+
 h3 {
-    margin: calc(var(--large) * 2) 0 var(--large) 0;
+    padding-top: var(--large);
+    font-size: 1.7em;
+}
+
+h4 {
+    font-size: 1.2em;
 }
 
 h3,
@@ -127,7 +137,7 @@ h3,
 nav {
     display: flex;
         flex-direction: column;
-    margin-right: var(--large);
+    /* margin-right: var(--large); */
     padding-right: var(--large);
     padding-top: var(--medium);
     border-right: var(--xsmall) solid var(--foreground);
@@ -156,19 +166,54 @@ nav a svg {
 
 main {
     width: 100%;
-    padding: 0 var(--medium);
+    /* padding: 0 var(--medium); */
+}
+
+main > *,
+section > * {
+    margin-left: calc(var(--large) * 2);
+}
+
+section {
+    margin: 0;
 }
 
 details,
 main p,
-ul,
-h2 {
-    margin: var(--large) 0;
+ul {
+    margin-bottom: var(--large);
+}
+
+main h2,
+main h3 {
+    margin: calc(var(--large) * 2) 0 var(--large) 0;
+    padding-left: calc(var(--large) * 2);
+}
+
+code,
+kbd {
+    background-color: var(--middleground);
+    padding: 0.2em 0.3em;
+    font-family: sans-serif;
+    font-weight: bold;
 }
 
 details {
     background-color: var(--middleground);
     padding: var(--medium) var(--large);
+}
+
+picture {
+    margin: var(--medium) 0;
+    
+}
+
+img {
+    max-width: 100%;
+    margin: var(--medium) 0;
+    border-top: var(--xsmall) solid var(--foreground);
+    border-right: var(--xsmall) solid var(--foreground);
+    border-bottom: var(--xsmall) solid var(--foreground);
 }
 
 summary {
@@ -218,7 +263,7 @@ progress::-moz-progress-bar {
 
 
 footer {
-    font-size: x-small;
+    font-size: 0.8em;
     line-height: 1.5em;
 }
 
