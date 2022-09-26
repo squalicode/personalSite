@@ -1,7 +1,8 @@
 :root {
-    --background: #082369;
-    --foreground: #ebebeb;
-    --middleground: #ebebeb20;
+    --background: #14171b;
+    --foreground: #d8dde3;
+    --middleground: #90c1e615;
+    --accent: #90c1e6;
     --large: 1.2rem;
     --medium: 0.7rem;
     --small: 0.5rem;
@@ -37,7 +38,7 @@ html::-webkit-scrollbar-thumb {
 
 ::selection,
 :focus-visible {
-    background-color: var(--foreground);
+    background-color: var(--accent);
     color: var(--background);
 }
 
@@ -57,18 +58,19 @@ a {
 
 a,
 summary {
-    transition: opacity 0.1s;
+    transition: opacity 150ms;
 }
 
 a:hover,
 summary:hover,
 .dim {
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 main a,
 footer a {
-    border-bottom: var(--xsmall) solid var(--foreground);
+    border-bottom: var(--xsmall) solid var(--accent);
+    color: var(--accent);
 }
 
 section > a {
@@ -135,9 +137,9 @@ h3,
 
 
 nav {
+    user-select: none;
     display: flex;
         flex-direction: column;
-    /* margin-right: var(--large); */
     padding-right: var(--large);
     padding-top: var(--medium);
     border-right: var(--xsmall) solid var(--foreground);
@@ -150,7 +152,7 @@ nav a {
 }
 
 nav a svg {
-    margin-right: 0.3em;
+    margin-right: var(--medium);
     align-self: center;
 }
 
@@ -161,12 +163,12 @@ nav a svg {
     width: 100%;
     display: flex;
         flex-direction: row;
-    margin: var(--large) 0;
+    margin: var(--large) 0 0 0;
 }
 
 main {
     width: 100%;
-    /* padding: 0 var(--medium); */
+    padding-bottom: var(--medium);
 }
 
 main > *,
@@ -200,6 +202,7 @@ kbd {
 
 details {
     background-color: var(--middleground);
+    /* border: var(--xsmall) solid var(--foreground); */
     padding: var(--medium) var(--large);
 }
 
@@ -238,12 +241,16 @@ li {
     margin: var(--medium) 0;
 }
 
+li::marker {
+    color: var(--accent);
+}
+
 progress {
     height: var(--small);
     vertical-align: middle;
     margin-right: var(--medium);
     background-color: var(--middleground);
-    color: var(--foreground);
+    color: var(--accent);
     border: none;
 }
 
@@ -252,17 +259,19 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-    background-color: var(--foreground);
+    background-color: var(--accent);
 }
 
 progress::-moz-progress-bar {
-    background-color: var(--foreground);
+    background-color: var(--accent);
 }
 
 
 
 
 footer {
+    padding-top: var(--large);
+    border-top: var(--xsmall) solid var(--foreground);
     font-size: 0.8em;
     line-height: 1.5em;
 }
