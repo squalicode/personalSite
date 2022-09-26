@@ -1,3 +1,20 @@
+/*
+CONTENTS
+
+1. global
+2. layout
+    2.1 header, nav
+3. text
+    3.1 links
+4. interaction
+5. components
+6. animation
+7. desktop media query
+*/
+
+
+/*////////////////////////////////// GLOBAL /////////////////////////////////*/
+
 :root {
     --background: #14171b;
     --foreground: #d8dde3;
@@ -7,10 +24,8 @@
     --medium: 0.7rem;
     --small: 0.5rem;
     --xsmall: 0.15rem;
+    --margin: 1.2rem;
 }
-
-
-
 
 * {
     padding: 0;
@@ -36,72 +51,30 @@ html::-webkit-scrollbar-thumb {
     background-color: var(--foreground);
 }
 
-::selection,
-:focus-visible {
-    background-color: var(--accent);
-    color: var(--background);
+/*////////////////////////////////// LAYOUT //////////////////////////////////*/
+
+.contentWrapper {
+    border-top: var(--xsmall) solid var(--foreground);
 }
 
-:focus-visible {
-    /* Windows high-contrast themes override transparency */
-    outline: var(--xsmall) solid transparent;
+main {
+    padding-bottom: var(--medium);
+    width: 100%;
 }
 
+/************ header, nav ************/
 
-
-
-a {
-    color: var(--foreground);
-    font-weight: bold;
-    text-decoration: none;
-}
-
-a,
-summary {
-    transition: opacity 150ms;
-}
-
-a:hover,
-summary:hover,
-.dim {
-    opacity: 0.5;
-}
-
-main a,
-footer a {
-    border-bottom: var(--xsmall) solid var(--accent);
-    color: var(--accent);
-}
-
-section > a {
-    display: inline-block;
-    margin: 0 var(--small) var(--large) 0;
-    border: var(--xsmall) solid var(--foreground);
-    padding: var(--xsmall) var(--small);
-}
-
-section > a:first-of-type {
-    margin-left: calc(var(--large) * 2);
-}
-
-
-
-
-body {
-    width: 100vw;
-    display: flex;
-        justify-content: center;
-    overflow-x: hidden;
-}
-
-body > div {
-    width: 70vw;
+header {
     margin: var(--large) 0;
-    padding: var(--large);
 }
 
-
-
+footer {
+    margin-bottom: var(--large);
+    padding-top: var(--large);
+    border-top: var(--xsmall) solid var(--foreground);
+    font-size: 0.8em;
+    line-height: 1.5em;
+}
 
 h1:after {
     /* Don't want this to be an actual "_": screen readers read CSS-inserted content */
@@ -115,6 +88,53 @@ h1:after {
     animation: blink 1s 5;
 }
 
+nav {
+    display: flex;
+            justify-content: space-between;
+        border-bottom: var(--xsmall) solid var(--foreground);
+        flex-wrap: wrap;
+    user-select: none;
+    padding: 0 var(--medium);
+}
+
+/*/////////////////////////////////// TEXT ///////////////////////////////////*/
+
+main > *,
+section > *,
+footer > *,
+h1 {
+    margin: 0 var(--margin);
+}
+
+section,
+details,
+aside,
+picture {
+    margin: 0;
+}
+
+h2,
+h3,
+h4 {
+    padding-left: var(--margin);
+}
+
+details,
+main > p,
+section > p,
+details p,
+ul {
+    margin-bottom: var(--large);
+}
+
+code,
+kbd {
+    background-color: var(--middleground);
+    padding: 0.2em 0.3em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
 h2 {
     font-size: 2.2em;
 }
@@ -126,101 +146,16 @@ h3 {
 
 h4 {
     font-size: 1.2em;
+    margin: calc(var(--large) * 2) 0 var(--large) 0;
 }
 
-h3,
-.contentWrapper {
+h3 {
     border-top: var(--xsmall) solid var(--foreground);
-}
-
-
-
-
-nav {
-    user-select: none;
-    display: flex;
-        flex-direction: column;
-    padding-right: var(--large);
-    padding-top: var(--medium);
-    border-right: var(--xsmall) solid var(--foreground);
-}
-
-nav a {
-    display: flex;
-        flex-flow: row nowrap;
-    margin: var(--medium) 0;
-}
-
-nav a svg {
-    margin-right: var(--medium);
-    align-self: center;
-}
-
-
-
-
-.contentWrapper {
-    width: 100%;
-    display: flex;
-        flex-direction: row;
-    margin: var(--large) 0 0 0;
-}
-
-main {
-    width: 100%;
-    padding-bottom: var(--medium);
-}
-
-main > *,
-section > * {
-    margin-left: calc(var(--large) * 2);
-}
-
-section {
-    margin: 0;
-}
-
-details,
-main p,
-ul {
-    margin-bottom: var(--large);
 }
 
 main h2,
 main h3 {
     margin: calc(var(--large) * 2) 0 var(--large) 0;
-    padding-left: calc(var(--large) * 2);
-}
-
-code,
-kbd {
-    background-color: var(--middleground);
-    padding: 0.2em 0.3em;
-    font-family: sans-serif;
-    font-weight: bold;
-}
-
-details {
-    background-color: var(--middleground);
-    /* border: var(--xsmall) solid var(--foreground); */
-    padding: var(--medium) var(--large);
-}
-
-picture {
-    margin: var(--medium) 0;
-    
-}
-
-img {
-    max-width: 100%;
-    margin: var(--medium) 0;
-    border-top: var(--xsmall) solid var(--foreground);
-    border-right: var(--xsmall) solid var(--foreground);
-    border-bottom: var(--xsmall) solid var(--foreground);
-}
-
-summary {
-    cursor: pointer;
 }
 
 hr {
@@ -245,6 +180,77 @@ li::marker {
     color: var(--accent);
 }
 
+/************ links ************/
+
+main a,
+footer a {
+    border-bottom: var(--xsmall) solid var(--accent);
+    color: var(--accent);
+}
+
+a {
+    color: var(--foreground);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a {
+    display: flex;
+        flex-flow: row nowrap;
+    margin: var(--medium) 0;
+}
+
+nav a svg {
+    margin-right: var(--small);
+    align-self: center;
+}
+
+section > a {
+    display: inline-block;
+    margin: 0 0 calc(var(--large) * 2) var(--large);
+    border: var(--xsmall) solid var(--foreground);
+    padding: var(--xsmall) var(--medium);
+}
+
+/*/////////////////////////////// INTERACTION ///////////////////////////////*/
+
+a:hover,
+summary:hover,
+:focus {
+    opacity: 0.5;
+}
+
+::selection,
+:focus-visible {
+    background-color: var(--accent);
+    color: var(--background);
+    opacity: 1;
+}           
+
+summary {
+    cursor: pointer;
+}
+
+a,
+summary {
+    transition: opacity 150ms;
+}
+
+/*//////////////////////////////// COMPONENTS ////////////////////////////////*/
+
+img {
+    width: 100%;
+    margin-bottom: var(--large);
+    border-top: var(--xsmall) solid var(--foreground);
+    border-bottom: var(--xsmall) solid var(--foreground);
+}
+
+details,
+aside {
+    background-color: var(--middleground);
+    padding: var(--medium) var(--margin);
+}
+
 progress {
     height: var(--small);
     vertical-align: middle;
@@ -266,18 +272,11 @@ progress::-moz-progress-bar {
     background-color: var(--accent);
 }
 
-
-
-
-footer {
-    padding-top: var(--large);
-    border-top: var(--xsmall) solid var(--foreground);
-    font-size: 0.8em;
-    line-height: 1.5em;
+.dim {
+    opacity: 0.5;
 }
 
-
-
+/*//////////////////////////////// ANIMATION /////////////////////////////////*/
 
 @keyframes blink {
     0% {
@@ -286,34 +285,59 @@ footer {
     90% {
         opacity: 100%;
     }
-  }
+}
 
-@media (max-width: 700px) {
+/*/////////////////////////// DESKTOP MEDIA QUERY ///////////////////////////*/
 
-    .contentWrapper {
-        flex-direction: column;
-        align-items: center;
+@media (min-width: 45rem) {
+    :root {
+        --margin: 2rem;
     }
 
-    body > div { 
-        width: 90%;
+    header {
+        margin-top: var(--margin);
+    }
+
+    body > div {
+        width: 65%;
+        min-width: 45rem;
+        margin: 0 auto;
+    }
+
+    h1,
+    footer > * {
+        margin-left: 0;
+    }
+
+    .contentWrapper {
+        display: flex;
+            flex-direction: row;
+        margin: var(--large) 0 0 0;
     }
 
     nav {
-        flex-direction: row;
-            justify-content: space-between;
-        width: 100%;
-        margin-right: 0;
-        padding: var(--medium) 0;
-        border: none;
-        flex-wrap: wrap;
+        border-bottom: none;
+        flex-direction: column;
+            justify-content: flex-start;
+        padding-right: var(--large);
+        padding-top: var(--medium);
+        border-right: var(--xsmall) solid var(--foreground);
     }
 
-    nav * {
-        font-size: smaller;
+    nav a svg {
+        margin-right: var(--medium);
     }
 
-    nav a {
-        margin: 0 var(--xsmall);
+    picture,
+    img {
+        margin: var(--medium) 0;
+    }
+
+    img {
+        border-right: var(--xsmall) solid var(--foreground);
+    }
+
+    section > a:first-of-type {
+        margin-left: var(--margin);
     }
 }
