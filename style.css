@@ -62,18 +62,31 @@ main {
     width: 100%;
 }
 
-/************ header, nav ************/
-
-header {
-    margin: var(--large) 0;
-}
-
 footer {
-    margin-bottom: var(--large);
+    margin-bottom: var(--margin);
     padding-top: var(--large);
     border-top: var(--xsmall) solid var(--foreground);
     font-size: 0.8em;
     line-height: 1.5em;
+}
+
+.co2 {
+    display: flex;
+        justify-content: space-between;
+        /* align-items:flex-end; */
+    margin-top: var(--large);
+}
+
+.co2 svg {
+    width: 3em;
+    margin-left: var(--large);
+    order: 1;
+}
+
+/************ header, nav ************/
+
+header {
+    margin: var(--large) 0;
 }
 
 h1:after {
@@ -326,6 +339,16 @@ progress::-moz-progress-bar {
 
     nav a svg {
         margin-right: var(--medium);
+    }
+
+    footer {
+        display: flex;
+            justify-content: space-between;
+    }
+
+    .co2 {
+        text-align: right;
+        margin: 0;
     }
 
     picture,
