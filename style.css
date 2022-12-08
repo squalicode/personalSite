@@ -120,22 +120,18 @@ h1 {
 }
 
 section,
-details,
-aside,
 picture {
     margin: 0;
 }
 
 h2,
 h3,
-h4 {
+main > h4 {
     padding-left: var(--margin);
 }
 
-details,
 main > p,
 section > p,
-details p,
 ul {
     margin-bottom: var(--large);
 }
@@ -158,8 +154,12 @@ h3 {
 }
 
 h4 {
-    font-size: 1.2em;
-    margin: calc(var(--large) * 2) 0 var(--large) 0;
+    font-size: 1.5em;
+    margin: var(--large) 0;
+}
+
+h4.noMargin {
+    margin-bottom: 0;
 }
 
 h3 {
@@ -251,17 +251,26 @@ summary {
 
 /*//////////////////////////////// COMPONENTS ////////////////////////////////*/
 
+svg {
+    fill: currentColor;
+}
+
+.skills svg {
+    height: 1.5em;
+    margin-right: 0.3em;
+    vertical-align: middle;
+}
+
+svg.hello {
+    height: 1.2em;
+    vertical-align:text-bottom;
+}
+
 img {
     width: 100%;
     margin-bottom: var(--large);
     border-top: var(--xsmall) solid var(--foreground);
     border-bottom: var(--xsmall) solid var(--foreground);
-}
-
-details,
-aside {
-    background-color: var(--middleground);
-    padding: var(--medium) var(--margin);
 }
 
 progress {
@@ -344,6 +353,11 @@ progress::-moz-progress-bar {
     footer {
         display: flex;
             justify-content: space-between;
+    }
+
+    .skills {
+        display: flex;
+            justify-content: space-evenly;
     }
 
     .co2 {
